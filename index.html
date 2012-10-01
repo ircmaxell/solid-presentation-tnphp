@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Don't Be Stupid, Grasp Solid</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="assets/js/jquery.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.mobile.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.tools.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.hashchange.js"></script>
+        <script type="text/javascript" src="assets/js/markdown.js"></script>
+        <script type="text/javascript" src="assets/js/prettify.js"></script>
+
+
+
+        <script type="text/javascript" src="assets/js/slides.js"></script>
+        <link href="assets/css/master.css" rel="stylesheet" type="text/css"></link>
+        <link href="assets/css/prettify.css" rel="stylesheet" type="text/css"></link>
+
+    </head>
+    <body>
+        <div class="window">
+            <div class="slider">
+                <div class="markdown title" title="Home">
+                    Don't Be STUPID
+                    ===============
+                    Grasp SOLID
+                    ===========
+                                        
+                    ##### And Other Principles of 
+                    ##### Object Oriented Design
+                </div>
+                <div class="Paradigms" title="Paradigms 2">
+                    <canvas id="paradigms" width="1200" height=900"></canvas>
+                </div>
+                <div class="markdown paradigm-summary" title="Principles">
+                    # None Of These Principles
+                    # Are Limited To OOP
+                    ##### They can be applied to any paradigm
+                </div>
+                <div class="markdown paradigm-summary" title="Principles 2">
+                    # All Of These Principles
+                    # Are For Production Code
+                    ##### They can be violated while developing
+                </div>
+                <div class="stupid Letters" title="STUPID">
+                    <dl>
+                        <dt>S</dt>
+                        <dd class="show">ingletons</dd>
+                        <dt>T</dt>
+                        <dd class="show">ight Coupling</dd>
+                        <dt>U</dt>
+                        <dd class="show">ntestable Code</dd>
+                        <dt>P</dt>
+                        <dd class="show">remature Optimization</dd>
+                        <dt>I</dt>
+                        <dd class="show">ndescriptive Naming</dd>
+                        <dt>D</dt>
+                        <dd class="show">uplication</dd>
+                    </dl>
+                </div>
+                <div class="solid Letters" title="SOLID">
+                    <dl>
+                        <dt>S</dt>
+                        <dd class="show">ingle Responsibility Principle</dd>
+                        <dt>O</dt>
+                        <dd class="show">pen/Closed Principle</dd>
+                        <dt>L</dt>
+                        <dd class="show">iskov Substitution Principle</dd>
+                        <dt>I</dt>
+                        <dd class="show">nterface Segregation Principle</dd>
+                        <dt>D</dt>
+                        <dd class="show">ependency Inversion Principle</dd>
+                    </dl>
+                </div>
+                <div class="markdown title" title="Leaky Abstractions Title">
+                    # Leaky
+                    # Abstractions
+                </div>
+                <div title="Camaro">
+                    <img src="assets/images/camaro.jpg" class="full" />
+                </div>
+                <div title="Pedals">
+                    <img src="assets/images/brake_pedal.jpg" class="full" />
+                </div>
+                <div class="markdown List" title="Leaky Abstractions">
+                    ## Leaky Abstractions    
+                    * They Are Everywhere
+                        * Database Connections
+                        * File-systems
+                        * Floating Point Numbers
+                        * Fixed-Size Integers (64 bit)
+                    * They Are Impossible To Avoid
+                        * All Abstractions Leak
+                        * Leaks Are Technical Debt
+                        * Fix Leakage When Found
+                    * Maintain The Abstraction
+                        * Capture Exceptions
+                        * Check For Side-effects
+                </div>
+                <div class="markdown leak List" title="Leaky Abstractions 2">
+                    ## Leaky Abstractions (ctd)
+                    * Leaky:
+                    
+                            try {
+                                $mapper->loadPerson(1);
+                            } catch (DatabaseQueryException $e) {
+                                /* Woah!
+                                   What Does The DB have to do
+                                   With Anything???
+                                */
+                            }
+                </div>
+                <div class="markdown leak List" title="Leaky Abstractions 3">
+                    ## Leaky Abstractions (ctd)
+                    * Better:
+                    
+                            try {
+                                $mapper->loadPerson(1);
+                            } catch (RecordNotFoundException $e) {
+                                /* Eih!
+                                  A Person May Be A Record
+                                  But If It's A First-Class
+                                  Object, Why Leak The Record
+                                  Part???
+                                */
+                            }
+                </div>
+                <div class="markdown leak List" title="Leaky Abstractions 4">
+                    ## Leaky Abstractions (ctd)
+                    * Better Still:
+                    
+                            try {
+                                $mapper->loadPerson(1);
+                            } catch (PersonNotFoundException $e) {
+                                /* I Get It!
+                                    The Person Wasn't Found!
+                                    It All Makes Sense!
+                                */
+                            }
+                </div>
+                <div class="markdown title" title="Real World Problems">
+                    # Real World
+                    # Applications
+                    ## (And Problems)
+                </div>
+                <div class="markdown List" title="The New Operator">
+                    ## The `new` Operator
+                    * Instantiating Classes Inside Objects
+                        * Instead Of Injecting Dependencies
+                    * Violates:
+                        * Tight Coupling
+                        * Untestable Code
+                        * Single Responsibility Principle
+                        * Dependency Inversion Principle
+                        * Static Coupling
+                </div>
+                <div title="A House">
+                    <img src="assets/images/house.jpg" class="full" />
+                </div>
+                <div title="A Door">
+                    <img src="assets/images/door.jpg" class="full" />
+                </div>
+                <div title="A Doorknob">
+                    <img src="assets/images/doorknob.jpg" class="full" />
+                </div>
+                <div class="markdown List" title="Complexity ">
+                    ## Complexity
+                    * Abstraction Should Be Fractal
+                        * Methods Abstract Operations
+                        * Classes Abstract Responsibility
+                        * Layers Abstract Functionality
+                        * Packages Abstract Concepts
+                        * Libraries Abstract Interactions
+                        * Frameworks Abstract Communication
+                    * By Maintaining The Abstraction
+                        * We Can Focus On What  
+                            Rather Than How
+                </div>
+                <div class="markdown List" title="Compare">
+                    ## Compare:
+                    * PHPASS:
+                        * 1 Class
+                        * 2 Hashing Methods
+                        * 2 Pseudo-Random Generators
+                        * 6 Test Cases (6 assertions)
+                        * Class Oriented Programming
+                    * PHP-PasswordLib
+                        * 38 Classes
+                        * 4 Interfaces
+                        * 12 Hashing Methods
+                        * 1384 Test Cases (743 Unit Tests, 641 Vectors)
+                        * 6 Pseudo-Random Generators
+                        * Object Oriented Programming
+                </div>
+                <div class="markdown title" title="Good Enough">
+                    # Good
+                    # Is Not
+                    # Good Enough
+                </div>
+                <div class="markdown title" title="Principles">
+                    # These Are
+                    # Principles
+                </div>
+                <div class="markdown title" title="Bend">
+                    # You Can
+                    # Bend Them
+                </div>
+                <div class="markdown title" title="Break">
+                    # You Can
+                    # Break Them
+                </div>
+                <div class="markdown title" title="Understand">
+                    # But 
+                    # Understand
+                    # Them
+                </div>
+                <div class="markdown title" title="Know What You're Giving Up">
+                    # Know What 
+                    # You're
+                    # Giving Up
+                </div>
+                <div class="markdown title" title="Why">
+                    # And Understand
+                    # Why You're 
+                    # Giving It Up
+                </div>
+                <div class="markdown title" title="EOD">
+                    # At The End
+                    # Of The Day
+                </div>
+                <div class="markdown title" title="Working">
+                    # Working 
+                    # Is Better Than
+                    # Perfect
+                </div>
+                <div class="markdown quote" title="Consistency">
+                    ## A Foolish Consistency
+                    ## Is The Hobgoblin
+                    ## Of Little Minds
+                    ##### Ralph Waldo Emerson
+                </div>
+                <div class="markdown List comments" title="Comments">
+                    1. Questions?
+                    2. Comments?
+                    3. Snide Remarks?
+                </div>
+                <div class="markdown credits" title="Credits">
+                    ## Anthony Ferrara
+                    ## @ircmaxell
+                    ## blog.ircmaxell.com
+                    ## me@ircmaxell.com
+                </div>
+            </div>
+        </div>
+        <div class="pagination">
+            <form>
+                <select>
+                </select>
+            </form>
+        </div>
+    </body>
+</html>
