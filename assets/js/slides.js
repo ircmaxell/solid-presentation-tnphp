@@ -156,6 +156,166 @@
         });
     }, Appear);
 
+    slideClasses.Fractal = inherit(function(el) {
+        var canvas = $(el).find('canvas')[0],
+            self = this,
+            currentStep = 0,
+            ctx = canvas.getContext('2d');
+        ctx.font = 'bold 55px Trebuchet,Georgia,Arial,sans-serif';
+
+        $.extend(this, {
+            element: el,
+            resize: function(width, height) {
+                $(canvas).css({
+                    width: width,
+                    height: height
+                });
+            },
+            step1: function() {
+                this.drawClass(500, 100);
+            },
+            step2: function() {
+                this.drawClass(250, 100);
+                this.drawClass(750, 100);
+            },
+            step3: function() {
+                this.drawClass(500, 350);
+                this.drawClass(250, 350);
+                this.drawClass(750, 350);
+                this.drawLine(500, 150, 500, 300);
+                this.drawLine(500, 150, 250, 300);
+                this.drawLine(500, 150, 750, 300);
+            },
+            step4: function() {
+                this.drawClass(500, 600);
+                this.drawClass(250, 600);
+                this.drawClass(750, 600);
+                this.drawLine(500, 400, 500, 550);
+                this.drawLine(500, 400, 250, 550);
+                this.drawLine(500, 400, 750, 550);
+            },
+            step5: function() {
+                this.drawClass(500, 850);
+                this.drawClass(250, 850);
+                this.drawClass(750, 850);
+                this.drawLine(500, 650, 500, 800);
+                this.drawLine(500, 650, 250, 800);
+                this.drawLine(500, 650, 750, 800);
+            },
+            step6: function() {
+                ctx.strokeStyle = '#FF0000';
+                ctx.fillStyle = '#FF0000';
+                ctx.beginPath();
+                ctx.arc(500, 600, 400, -1 * Math.PI / 6, Math.PI / 6, false);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(850, 765);
+                ctx.lineTo(850, 800);
+                ctx.closePath();
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(850, 800);
+                ctx.lineTo(870, 780);
+                ctx.closePath();
+                ctx.stroke();
+            },
+            step7: function() {
+                ctx.fillText("NO!", 880, 800);
+            },
+            step8: function() {
+                ctx.beginPath();
+                ctx.arc(500, 725, 365, 56 * Math.PI / 60, 64 * Math.PI / 60, false);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(140, 650);
+                ctx.lineTo(150, 685);
+                ctx.closePath();
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(140, 650);
+                ctx.lineTo(120, 670);
+                ctx.closePath();
+                ctx.stroke();
+                ctx.fillText("NO!", 10, 640);
+            },
+            step9: function() {
+                ctx.strokeStyle = '#00FF00';
+                ctx.fillStyle = '#00FF00';
+                ctx.beginPath();
+                ctx.moveTo(500, 650);
+                ctx.lineTo(500, 800);
+                ctx.closePath();
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(500, 800);
+                ctx.lineTo(525, 775);
+                ctx.closePath();
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(500, 800);
+                ctx.lineTo(475, 775);
+                ctx.closePath();
+                ctx.stroke();
+                ctx.fillText('OK!', 510, 780);
+               
+            },
+            step10: function() {
+                ctx.strokeStyle = '#00FF00';
+                ctx.fillStyle = '#00FF00';
+                ctx.beginPath();
+                ctx.moveTo(350, 850);
+                ctx.lineTo(400, 850);
+                ctx.closePath();
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(400, 850);
+                ctx.lineTo(375, 825);
+                ctx.closePath();
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(400, 850);
+                ctx.lineTo(375, 875);
+                ctx.closePath();
+                ctx.stroke();
+                ctx.fillText('OK!', 350, 960);
+            },
+            drawLine: function(x1, y1, x2, y2) {
+                ctx.strokeStyle = '#FFFFFF';
+                ctx.fillStyle = '#FFFFFF';
+                ctx.lineWidth = 10;
+                ctx.beginPath();
+                ctx.moveTo(x1, y1);
+                ctx.lineTo(x2, y2);
+                ctx.closePath();
+                ctx.stroke();
+            },
+            drawClass: function(x, y) {
+                ctx.strokeStyle = '#FFFFFF';
+                ctx.fillStyle = '#FFFFFF';
+                ctx.lineWidth = 10;
+                ctx.beginPath();
+                ctx.moveTo(x - 100, y - 50);
+                ctx.lineTo(x + 100, y - 50);
+                ctx.lineTo(x + 100, y + 50);
+                ctx.lineTo(x - 100, y + 50);
+                ctx.lineTo(x - 100, y - 50);
+                ctx.closePath();
+                ctx.stroke();
+                ctx.fillText("Class", x - 75, y + 25);
+            },
+            next: function() {
+                currentStep += 1;
+                
+                if (this['step' + currentStep]) {
+                    this['step' + currentStep]()
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+    }, Slide);
+
     slideClasses.Paradigms = inherit(function(el) {
         var canvas = $(el).find('canvas')[0],
         self = this,
