@@ -138,6 +138,26 @@
                                 */
                             }
                 </div>
+                <div class="markdown title" title="Law of Demeter Title">
+                    # Law of
+                    # Demeter
+                </div>
+                <div title="Strangers">
+                    <img src="assets/images/strangers.jpg" class="full" />
+                </div>
+                <div class="markdown List" title="Law of Demeter">
+                    ## Law of Demeter
+                    ## Principle of Least Knowledge
+                    * Know As Little As Possible
+                    * Only Talk To Friends
+                        * Objects Closely Related To The Class
+                    * Reduces Dependencies
+                    * Benefits:
+                        * Maintainable Code
+                        * Reusable Code
+                        * Easy To Understand Code
+                </div>
+
                 <div class="markdown List" title="Complexity ">
                     ## Complexity
                     * Abstraction Should Be Fractal
@@ -185,6 +205,56 @@
                         * 6 Pseudo-Random Generators
                         * Object Oriented Programming
                 </div>
+                <div class="markdown title" title="Real World Problems">
+                    # Real World
+                    # Applications
+                    ## (And Problems)
+                </div>
+                <div class="markdown List" title="Active Record">
+                    ## Active Record
+                    * Business Objects Are "Active"
+                    
+                            $obj->save();
+                    
+                    * Violates:
+                        * Tight Coupling
+                        * Single Responsibility Principle
+                        * Open Closed Principle
+                        * Interface Segregation Principle
+                        * Dependency Inversion Principle
+                        * Leaky Abstractions
+                </div>
+                <div class="markdown List" title="Active Record 2">
+                    ## Active Record (ctd)
+                    * ORM Has The Same Problems
+                        * Only If Applied To Business Objects
+                    * Can Be Used In A Data Mapper
+                        * (A Layer Between Business And Persistence)
+                </div>
+                <div class="markdown List" title="Service Locator">
+                    ## Service Locator
+                    ## Dependency Injection Container
+                    ## Global Registry
+                    * A Container Is Injected
+                        * Dependencies Are "Pulled" From Container
+                    * Violates:
+                        * Tight Coupling
+                        * Single Responsibility Principle
+                        * Dependency Inversion Principle
+                        * Law Of Demeter
+                </div>
+                <div class="markdown List" title="Service Locator 2">
+                    ## Service Locator (ctd)
+                    * Better Than Concrete Dependencies
+                        * Adds A Place To Inject Mocks
+                        * It Is Testable
+                    * **NOT** Dependency Injection
+                        * Depends On A Concrete Locator
+                        * Class Is Not Dependent Upon An Abstraction
+                        * Classes Dependencies Are Not Known
+                        * Limits Reuse
+                        * Can Make Edge Cases Harder To Test
+                </div>
                 <div class="markdown List" title="The New Operator">
                     ## The `new` Operator
                     * Instantiating Classes Inside Objects
@@ -205,6 +275,32 @@
                 <div title="A Doorknob">
                     <img src="assets/images/doorknob.jpg" class="full" />
                 </div>
+                <div class="markdown title" title="Deep Inheritance">
+                    # Deep
+                    # Inheritance
+                </div>
+                <div title="Inheritance">
+                    <img src="assets/images/inheritance.png" class="full" />
+                </div>
+                <div class="markdown List" title="Deep Inheritance 2">
+                    # Deep Inheritance
+                    * Adds Unnecessary Complexity
+                    * Tightly Couples Trees
+                    * A Form Of Static Coupling
+                    * Favor Composition  
+                        Over Inheritance
+                    * Relationships Between Classes:
+                        * Always "Is A"
+                        * Never "Acts As A"
+                        * Never "Has A"
+                        * Never "Can Be A"
+                </div>
+                <div class="markdown title" title="Deep Inheritance 3">
+                    # Traits Are
+                    # Inheritance!
+                    ##### Use Carefully!
+                </div>
+
                 <div class="markdown title" title="Good Enough">
                     # Good
                     # Is Not
