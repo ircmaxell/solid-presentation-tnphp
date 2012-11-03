@@ -230,3 +230,10 @@ div h2 code.prettyprint {
     margin: 0.1em;
     padding: 0.2em;
 }
+
+div.crosscut code {
+    font-size: 2em;
+}
+div.crosscut2 code {
+    font-size: 1.7em;
+}
